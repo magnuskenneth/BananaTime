@@ -29,4 +29,6 @@ gulp.task('watch', function() {
 	gulp.watch(paths.scripts, ['lint', 'test']);
 });
 
-gulp.task('default', ['lint', 'test']);
+gulp.task('verify', ['lint', 'test']);
+
+gulp.task('default', ['verify']);

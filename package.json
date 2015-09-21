@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Keeps track of when it is time to eat the 10:26 Banana",
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp verify"
   },
   "author": "Magnus Sillén",
   "license": "ISC",
