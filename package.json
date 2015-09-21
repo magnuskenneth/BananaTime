@@ -1,0 +1,17 @@
+{
+  "name": "ten26Banana",
+  "version": "0.0.1",
+  "description": "Keeps track of when it is time to eat the 10:26 Banana",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "author": "Magnus Sillén",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-mocha-phantomjs": "^0.10.1",
+    "mocha": "^2.3.3",
+    "chai": "^3.3.0",
+    "gulp-eslint": "^1.0.0"
+  }
+}
