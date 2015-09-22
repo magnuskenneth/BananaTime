@@ -1,3 +1,26 @@
+// Mixins
+.animation(@arguments) {
+	-webkit-animation: @arguments;
+	-moz-animation: @arguments;
+	-o-animation: @arguments;
+	animation: @arguments;
+}
+
+.keyframes(@name; @arguments) {
+	@-webkit-keyframes @name { @arguments(); }
+	@-moz-keyframes @name { @arguments(); }
+	@-o-keyframes @name { @arguments(); }
+	@keyframes @name { @arguments(); }
+}
+
+.transform(@arguments){
+	-webkit-transform: @arguments;
+	-moz-transform: @arguments;
+	-ms-transform: @arguments;
+	-o-transform: @arguments;
+}
+
+// Styling
 body {
 	font-family: Helvetica, Arial, Sans-Serif;
 	font-size: 1rem;
@@ -36,17 +59,18 @@ h1 {
 .animate {
 	padding-top: 3rem;
 	display: inline-block;
-	animation:
+	.animation(
 		orbit 3s linear infinite,
-    	color 5s linear infinite;
+		color 5s linear infinite;
+	);
 }
 
-@keyframes orbit {
-    from { transform: rotate(0deg) translateX(100px) rotate(0deg); }
-    to   { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
-}
+.keyframes(orbit; {
+	from { .transform(rotate(0deg) translateX(100px) rotate(0deg)); }
+	to   { .transform(rotate(360deg) translateX(100px) rotate(-360deg)); }
+});
 
-@keyframes color {
+.keyframes(color; {
 	0% {
 		color: yellow;
 	}
@@ -71,23 +95,23 @@ h1 {
 	100% {
 		color: yellow;
 	}
-}
+});
 
 .banana-gifs {
 	width: 100%;
-    position: absolute;
-    text-align: center;
-    top: 3rem;
-    z-index: -1;
-}
+	position: absolute;
+	text-align: center;
+	top: 3rem;
+	z-index: -1;
 
-.banana-gifs img {
-	display: none;
-	max-width: 100%;
-}
+	img {
+		display: none;
+		max-width: 100%;
 
-.banana-gifs img.show {
-	display: inline-block;
+		&.show {
+			display: inline-block;
+		}
+	}
 }
 
 footer {

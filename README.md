@@ -6,11 +6,17 @@ To install, run:
 
 	npm install
 
+To build run:
+
+	gulp build
+
+If the build is successful the output will be found in a folder named build.
+
 This gulp task will run the unit tests:
 
 	gulp test
 
-Run this gulp task to automatically run tests whenever a js file has been edited:
+Run this gulp task to automatically run lint and tests whenever a js file has been edited and less whenever any less file has been edited:
 
 	gulp watch
 
