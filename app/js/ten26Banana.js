@@ -9,10 +9,7 @@
 			var that = this;
 			setInterval(function () {
 				var now = new Date();
-				var h = now.getHours();
-				var m = now.getMinutes();
-				
-				if (h === 10 && m === 26) {
+				if (that.isItBananaTime(now)) {
 					// Go bananas at 10:26 :)
 					that.goBananas();	
 				} else {
