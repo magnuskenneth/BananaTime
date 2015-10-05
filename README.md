@@ -1,4 +1,4 @@
-# BananaTime
+# BananaTime - [![Build Status](https://travis-ci.org/magnuskenneth/BananaTime.svg?branch=master)](https://travis-ci.org/magnuskenneth/BananaTime)
 This is a web app counting down to when it is time to eat banana. Init the bananaTime module with when it is time to eat banana, e.g. if time to eat banana is 10:26: bananaTime.init({ h: 10, m: 26 });
 
 ## Test and development
