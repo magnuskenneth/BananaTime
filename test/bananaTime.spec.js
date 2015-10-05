@@ -1,9 +1,16 @@
-describe('The Ten 26 Banana module', function () {
+describe('The Banana Time module initialized to banana time at 10:26', function () {
 	var expect = chai.expect;
+	before(function () {
+		bananaTime.init({
+			h: 10,
+			m: 26
+		});
+	});
 
 	describe('isItBananaTime function', function () {
+		
 		it('should throw error of no date is passed when called', function () {
-			var fn = ten26Banana.isItBananaTime.bind(ten26Banana);
+			var fn = bananaTime.isItBananaTime.bind(bananaTime);
 			expect(fn).to.throw(Error);
 		});
 
@@ -12,7 +19,7 @@ describe('The Ten 26 Banana module', function () {
 			date.setHours(10);
 			date.setMinutes(26);
 
-			expect(ten26Banana.isItBananaTime(date)).to.be.true;
+			expect(bananaTime.isItBananaTime(date)).to.be.true;
 		});
 
 		it('should return false if the date passed has time 10:27', function () {
@@ -20,7 +27,7 @@ describe('The Ten 26 Banana module', function () {
 			date.setHours(10);
 			date.setMinutes(27);
 
-			expect(ten26Banana.isItBananaTime(date)).to.be.false;
+			expect(bananaTime.isItBananaTime(date)).to.be.false;
 		});
 
 		it('should return false if the date passed has time 10:25', function () {
@@ -28,13 +35,13 @@ describe('The Ten 26 Banana module', function () {
 			date.setHours(10);
 			date.setMinutes(25);
 
-			expect(ten26Banana.isItBananaTime(date)).to.be.false;
+			expect(bananaTime.isItBananaTime(date)).to.be.false;
 		});
 	})
 
 	describe('timeToNextBanana function', function () {
 		it('should throw error if no date is passed when called', function () {
-			var fn = ten26Banana.timeToNextBanana.bind(ten26Banana);
+			var fn = bananaTime.timeToNextBanana.bind(bananaTime);
 			expect(fn).to.throw(Error);
 		});
 
@@ -44,7 +51,7 @@ describe('The Ten 26 Banana module', function () {
 			date.setMinutes(5);
 			date.setSeconds(36);
 
-			expect(ten26Banana.timeToNextBanana(date)).to.eql({
+			expect(bananaTime.timeToNextBanana(date)).to.eql({
 				h: 2,
 				m: 20,
 				s: 24
@@ -57,7 +64,7 @@ describe('The Ten 26 Banana module', function () {
 			date.setMinutes(10);
 			date.setSeconds(36);
 
-			expect(ten26Banana.timeToNextBanana(date)).to.eql({
+			expect(bananaTime.timeToNextBanana(date)).to.eql({
 				h: 20,
 				m: 15,
 				s: 24
@@ -73,7 +80,7 @@ describe('The Ten 26 Banana module', function () {
 			date.setMinutes(10);
 			date.setSeconds(36);
 
-			ten26Banana.setCountDownString(element, date);
+			bananaTime.setCountDownString(element, date);
 
 			expect(element.innerHTML).to.equal('20h 15m 24s');
 		});
@@ -85,7 +92,7 @@ describe('The Ten 26 Banana module', function () {
 			date.setMinutes(10);
 			date.setSeconds(36);
 
-			ten26Banana.setCountDownString(element, date);
+			bananaTime.setCountDownString(element, date);
 
 			expect(element.innerHTML).to.equal('15m 24s');
 		});
@@ -97,7 +104,7 @@ describe('The Ten 26 Banana module', function () {
 			date.setMinutes(25);
 			date.setSeconds(36);
 
-			ten26Banana.setCountDownString(element, date);
+			bananaTime.setCountDownString(element, date);
 
 			expect(element.innerHTML).to.equal('24s');
 		});

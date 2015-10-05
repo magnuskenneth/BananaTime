@@ -1,7 +1,7 @@
 {
-  "name": "ten26Banana",
+  "name": "BananaTime",
   "version": "0.0.1",
-  "description": "Keeps track of when it is time to eat the 10:26 Banana",
+  "description": "Keeps track of when it is time to eat banana",
   "scripts": {
     "test": "gulp verify"
   },

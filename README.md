@@ -1,5 +1,5 @@
-# ten26Banana - [![Build Status](https://travis-ci.org/magnuskenneth/ten26Banana.svg?branch=master)](https://travis-ci.org/magnuskenneth/ten26Banana)
-Me and my colleagues likes to eat a banana at 10:26 a.m. so this is a web app counting down to when it is time to eat the next Ten 26 Banana.
+# BananaTime
+This is a web app counting down to when it is time to eat banana. Init the bananaTime module with when it is time to eat banana, e.g. if time to eat banana is 10:26: bananaTime.init({ h: 10, m: 26 });
 
 ## Test and development
 To install, run:

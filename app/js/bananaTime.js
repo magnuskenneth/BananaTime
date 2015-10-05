@@ -1,16 +1,16 @@
 (function () {
-	var ten26Banana = {
+	var bananaTime = {
 		h1El: document.querySelector('h1'),
 		bananaSpanEl: document.querySelector('.banana-wrapper > span'),
 		countdownEl: document.querySelector('.countdown'),
 		goBananasActive: false,
 
-		init: function () {
+		init: function (timeToEatBanana) {
 			var that = this;
+			this.timeToEatBanana = timeToEatBanana;
 			setInterval(function () {
 				var now = new Date();
 				if (that.isItBananaTime(now)) {
-					// Go bananas at 10:26 :)
 					that.goBananas();	
 				} else {
 					that.stopBananas();
@@ -30,7 +30,7 @@
 					gifs[index].className = 'show';
 					index = index < gifs.length-1 ? index+1 : 0;
 				}
-				this.h1El.innerHTML = 'EAT 10:26 BANANA';
+				this.h1El.innerHTML = 'EAT BANANA NOW';
 				this.bananaSpanEl.className = 'animate';
 				this.countdownEl.innerHTML = '';
 				toggleGif();
@@ -69,7 +69,7 @@
 				throw new Error('No date passed');
 			}
 
-			return date.getHours() === 10 && date.getMinutes() === 26;
+			return date.getHours() === this.timeToEatBanana.h && date.getMinutes() === this.timeToEatBanana.m;
 		},
 
 		timeToNextBanana: function (date) {
@@ -83,11 +83,11 @@
 			dateCopy.setMilliseconds(0);
 
 			var nextBananaDate = new Date();
-			if (dateH >= 10 && dateM > 26 || dateH >= 11) {
+			if (dateH >= this.timeToEatBanana.h && dateM > this.timeToEatBanana.m || dateH >= (this.timeToEatBanana.h+1)) {
 				nextBananaDate.setDate(dateCopy.getDate() + 1);
 			}
-			nextBananaDate.setHours(10);
-			nextBananaDate.setMinutes(26);
+			nextBananaDate.setHours(this.timeToEatBanana.h);
+			nextBananaDate.setMinutes(this.timeToEatBanana.m);
 			nextBananaDate.setSeconds(0);
 			nextBananaDate.setMilliseconds(0);
 
@@ -104,5 +104,5 @@
 		}
 	};
 
-	window.ten26Banana = ten26Banana;
+	window.bananaTime = bananaTime;
 }());
