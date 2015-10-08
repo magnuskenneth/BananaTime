@@ -1,9 +1,86 @@
 describe('The Banana Time module initialized to banana time at 10:26', function () {
 	var expect = chai.expect;
-	before(function () {
+	beforeEach(function () {
 		bananaTime.init({
 			h: 10,
 			m: 26
+		});
+	});
+
+	afterEach(function () {
+		bananaTime.stopTimers();
+	});
+
+	describe('sortTimeObjects function', function () {
+		it('should sort an array of time objects in ascending order when used in array sort', function () {
+			var arr = [
+				{
+					h: 9,
+					m: 2
+				},
+				{
+					h: 10,
+					m: 20
+				},
+				{
+					h: 9,
+					m: 1
+				}
+			];
+
+			var expectedArr = [
+				{
+					h: 9,
+					m: 1
+				},
+				{
+					h: 9,
+					m: 2
+				},
+				{
+					h: 10,
+					m: 20
+				}
+			];
+
+			arr.sort(bananaTime.sortTimeObjects);
+
+			expect(arr).to.eql(expectedArr);
+		});
+	});
+
+	describe('getNextTimeObject', function () {
+		it('should return the time object closest ahead from the time of the date sent as parameter', function () {
+			var timeArray = [
+				{
+					h: 10,
+					m: 26
+				},
+				{
+					h: 14,
+					m: 26
+				}
+			];
+
+
+			var date = new Date();
+			date.setHours(11);
+			date.setMinutes(40);
+			var time = bananaTime.getNextTimeObject(timeArray, date);
+
+			expect(time).to.eql({
+				h: 14,
+				m: 26
+			});
+
+			date.setHours(16);
+			date.setMinutes(30);
+			time = bananaTime.getNextTimeObject(timeArray, date);
+
+			expect(time).to.eql({
+				h: 10,
+				m: 26
+			});
 		});
 	});
 

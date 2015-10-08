@@ -6,9 +6,18 @@
 		goBananasActive: false,
 
 		init: function (timeToEatBanana) {
+
+			if (timeToEatBanana.length) {
+				this.timeToEatBananaArray = timeToEatBanana;
+				this.timeToEatBananaArray.sort(this.sortTimeObjects);
+				this.timeToEatBanana = this.getNextTimeObject(this.timeToEatBananaArray, new Date());
+			} else {
+				this.timeToEatBanana = timeToEatBanana;
+			}
+
 			var that = this;
-			this.timeToEatBanana = timeToEatBanana;
-			setInterval(function () {
+			
+			this.countdownTimer = setInterval(function () {
 				var now = new Date();
 				if (that.isItBananaTime(now)) {
 					that.goBananas();	
@@ -17,6 +26,27 @@
 					that.setCountDownString(that.countdownEl, now);
 				}
 			}, 1000);
+		},
+
+		getNextTimeObject: function (timeArray, date) {
+			var h = date.getHours();
+			var m = date.getMinutes();
+			var i = 0;
+
+			for(i=0; i<timeArray.length; i++) {
+				if (h < timeArray[i].h || (h === timeArray[i].h && m <= timeArray[i].m)) {
+					break;
+				}
+			}
+
+			return i < timeArray.length ? timeArray[i] : timeArray[0];
+		},
+
+		sortTimeObjects: function (a, b) {
+			if (a.h === b.h) {
+				return a.m > b.m ? 1 : -1;
+			}
+			return a.h > b.h ? 1 : -1;
 		},
 
 		goBananas: function () {
@@ -48,6 +78,7 @@
 				if (visibleGif) {
 					visibleGif.className = '';
 				}
+				this.timeToEatBanana = this.getNextTimeObject(this.timeToEatBananaArray, new Date());
 			}
 		},
 
@@ -101,6 +132,11 @@
 			timeLeft.s = secondsLeft;
 
 			return timeLeft;
+		},
+
+		stopTimers: function () {
+			clearInterval(this.showGifsInterval);
+			clearInterval(this.countdownTimer);
 		}
 	};
 
