@@ -43,3 +43,4 @@ jobs:
         name: github-pages
         path: build/
     - uses: actions/deploy-pages@v1
+      id: deployment
