@@ -1,14 +1,16 @@
+/**
+ * @jest-environment jsdom
+ */
+
+//var bananaTime = global.bananaTime; //require("../app/js/bananaTime");
+require("../app/js/bananaTime");
+
 describe('The Banana Time module initialized to banana time at 10:26', function () {
-	var expect = chai.expect;
 	beforeEach(function () {
 		bananaTime.init({
 			h: 10,
 			m: 26
 		});
-	});
-
-	afterEach(function () {
-		bananaTime.stopTimers();
 	});
 
 	describe('sortTimeObjects function', function () {
@@ -45,7 +47,7 @@ describe('The Banana Time module initialized to banana time at 10:26', function 
 
 			arr.sort(bananaTime.sortTimeObjects);
 
-			expect(arr).to.eql(expectedArr);
+			expect(arr).toEqual(expectedArr);
 		});
 	});
 
@@ -68,7 +70,7 @@ describe('The Banana Time module initialized to banana time at 10:26', function 
 			date.setMinutes(40);
 			var time = bananaTime.getNextTimeObject(timeArray, date);
 
-			expect(time).to.eql({
+			expect(time).toEqual({
 				h: 14,
 				m: 26
 			});
@@ -77,7 +79,7 @@ describe('The Banana Time module initialized to banana time at 10:26', function 
 			date.setMinutes(30);
 			time = bananaTime.getNextTimeObject(timeArray, date);
 
-			expect(time).to.eql({
+			expect(time).toEqual({
 				h: 10,
 				m: 26
 			});
@@ -85,10 +87,10 @@ describe('The Banana Time module initialized to banana time at 10:26', function 
 	});
 
 	describe('isItBananaTime function', function () {
-		
+
 		it('should throw error of no date is passed when called', function () {
 			var fn = bananaTime.isItBananaTime.bind(bananaTime);
-			expect(fn).to.throw(Error);
+			expect(fn).toThrow(Error);
 		});
 
 		it('should return true if the date passed has time 10:26', function () {
@@ -96,7 +98,7 @@ describe('The Banana Time module initialized to banana time at 10:26', function 
 			date.setHours(10);
 			date.setMinutes(26);
 
-			expect(bananaTime.isItBananaTime(date)).to.be.true;
+			expect(bananaTime.isItBananaTime(date)).toBe(true);
 		});
 
 		it('should return false if the date passed has time 10:27', function () {
@@ -104,7 +106,7 @@ describe('The Banana Time module initialized to banana time at 10:26', function 
 			date.setHours(10);
 			date.setMinutes(27);
 
-			expect(bananaTime.isItBananaTime(date)).to.be.false;
+			expect(bananaTime.isItBananaTime(date)).toBe(false);
 		});
 
 		it('should return false if the date passed has time 10:25', function () {
@@ -112,14 +114,14 @@ describe('The Banana Time module initialized to banana time at 10:26', function 
 			date.setHours(10);
 			date.setMinutes(25);
 
-			expect(bananaTime.isItBananaTime(date)).to.be.false;
+			expect(bananaTime.isItBananaTime(date)).toBe(false);
 		});
 	})
 
 	describe('timeToNextBanana function', function () {
 		it('should throw error if no date is passed when called', function () {
 			var fn = bananaTime.timeToNextBanana.bind(bananaTime);
-			expect(fn).to.throw(Error);
+			expect(fn).toThrow(Error);
 		});
 
 		it('should return { h: 2, m: 20: s: 24 } if sending a date with time set to 08:05:36', function () {
@@ -128,7 +130,7 @@ describe('The Banana Time module initialized to banana time at 10:26', function 
 			date.setMinutes(5);
 			date.setSeconds(36);
 
-			expect(bananaTime.timeToNextBanana(date)).to.eql({
+			expect(bananaTime.timeToNextBanana(date)).toEqual({
 				h: 2,
 				m: 20,
 				s: 24
@@ -141,7 +143,7 @@ describe('The Banana Time module initialized to banana time at 10:26', function 
 			date.setMinutes(10);
 			date.setSeconds(36);
 
-			expect(bananaTime.timeToNextBanana(date)).to.eql({
+			expect(bananaTime.timeToNextBanana(date)).toEqual({
 				h: 20,
 				m: 15,
 				s: 24
@@ -159,7 +161,7 @@ describe('The Banana Time module initialized to banana time at 10:26', function 
 
 			bananaTime.setCountDownString(element, date);
 
-			expect(element.innerHTML).to.equal('20h 15m 24s');
+			expect(element.innerHTML).toEqual('20h 15m 24s');
 		});
 
 		it('should set innerHTML in the element to "15m 24s" if sending a date with time set to 10:10:36', function () {
@@ -171,7 +173,7 @@ describe('The Banana Time module initialized to banana time at 10:26', function 
 
 			bananaTime.setCountDownString(element, date);
 
-			expect(element.innerHTML).to.equal('15m 24s');
+			expect(element.innerHTML).toEqual('15m 24s');
 		});
 
 		it('should set innerHTML in the element to "24s" if sending a date with time set to 10:25:36', function () {
@@ -183,7 +185,7 @@ describe('The Banana Time module initialized to banana time at 10:26', function 
 
 			bananaTime.setCountDownString(element, date);
 
-			expect(element.innerHTML).to.equal('24s');
+			expect(element.innerHTML).toEqual('24s');
 		});
 	});
 });

@@ -16,11 +16,11 @@
 			}
 
 			var that = this;
-			
+
 			this.countdownTimer = setInterval(function () {
 				var now = new Date();
 				if (that.isItBananaTime(now)) {
-					that.goBananas();	
+					that.goBananas();
 				} else {
 					that.stopBananas();
 					that.setCountDownString(that.countdownEl, now);
@@ -33,7 +33,7 @@
 			var m = date.getMinutes();
 			var i = 0;
 
-			for(i=0; i<timeArray.length; i++) {
+			for (i = 0; i < timeArray.length; i++) {
 				if (h < timeArray[i].h || (h === timeArray[i].h && m <= timeArray[i].m)) {
 					break;
 				}
@@ -55,10 +55,10 @@
 				var index = 0;
 				var gifs = document.querySelectorAll('.banana-gifs img');
 				function toggleGif() {
-					var prev = index === 0 ? gifs.length-1 : index-1;
+					var prev = index === 0 ? gifs.length - 1 : index - 1;
 					gifs[prev].className = '';
 					gifs[index].className = 'show';
-					index = index < gifs.length-1 ? index+1 : 0;
+					index = index < gifs.length - 1 ? index + 1 : 0;
 				}
 				this.h1El.innerHTML = 'EAT BANANA NOW';
 				this.bananaSpanEl.className = 'animate';
@@ -94,7 +94,7 @@
 			countdownStr += timeLeft.s + 's';
 			element.innerHTML = countdownStr;
 		},
-		
+
 		isItBananaTime: function (date) {
 			if (date === undefined) {
 				throw new Error('No date passed');
@@ -114,7 +114,7 @@
 			dateCopy.setMilliseconds(0);
 
 			var nextBananaDate = new Date();
-			if (dateH >= this.timeToEatBanana.h && dateM > this.timeToEatBanana.m || dateH >= (this.timeToEatBanana.h+1)) {
+			if (dateH >= this.timeToEatBanana.h && dateM > this.timeToEatBanana.m || dateH >= (this.timeToEatBanana.h + 1)) {
 				nextBananaDate.setDate(dateCopy.getDate() + 1);
 			}
 			nextBananaDate.setHours(this.timeToEatBanana.h);
@@ -122,12 +122,12 @@
 			nextBananaDate.setSeconds(0);
 			nextBananaDate.setMilliseconds(0);
 
-			var secondsLeft = Math.ceil((nextBananaDate.getTime() - dateCopy.getTime())/1000);
+			var secondsLeft = Math.ceil((nextBananaDate.getTime() - dateCopy.getTime()) / 1000);
 			var timeLeft = {};
 			var secondsPerHour = 3600;
 			timeLeft.h = Math.floor(secondsLeft / (secondsPerHour));
 			secondsLeft -= timeLeft.h * secondsPerHour;
-			timeLeft.m = Math.floor(secondsLeft/60);
+			timeLeft.m = Math.floor(secondsLeft / 60);
 			secondsLeft -= timeLeft.m * 60;
 			timeLeft.s = secondsLeft;
 
