@@ -31,11 +31,11 @@ jobs:
     - run: npm ci
     - run: npm test
     - run: npm run build --if-present
-    - run: tar -cf build/artifact.tar build/*
+    - run: tar -cf artifact.tar build/*
     - uses: actions/upload-artifact@v3
       with:
         name: github-pages
-        path: build/artifact.tar
+        path: artifact.tar
 
   # Deploy job
   deploy:
