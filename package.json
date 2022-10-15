@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "Keeps track of when it is time to eat banana",
   "scripts": {
-    "test": "gulp verify"
+    "test": "gulp test",
+    "build": "gulp build",
   },
   "author": "Magnus Sillén",
   "license": "ISC",
