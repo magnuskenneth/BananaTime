@@ -35,7 +35,7 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: github-pages
-        path: build/
+        path: build/artifact.tar
 
   # Deploy job
   deploy:
