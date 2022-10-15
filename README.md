@@ -8,19 +8,13 @@ To install, run:
 
 To build run:
 
-	gulp build
+	npm run build
 
 If the build is successful the output will be found in a folder named build.
 
-This gulp task will run the unit tests:
+To test run:
 
-	gulp test
-
-Run this gulp task to automatically run lint and tests whenever a js file has been edited and less whenever any less file has been edited:
-
-	gulp watch
-
-See gulpfile.js for more gulp commands.
+	npm test
 
 ## License
 ISC License (ISC)
