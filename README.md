@@ -1,22 +1,27 @@
 # BananaTime - [![Build Status](https://travis-ci.org/magnuskenneth/BananaTime.svg?branch=master)](https://travis-ci.org/magnuskenneth/BananaTime)
+
 This is a web app counting down to when it is time to eat banana.
 
 ## Test and development
+
+This project is using [pnpm](https://pnpm.io/installation) as package manager.
+
 To install, run:
 
-	npm install
+ pnpm install
 
 To build run:
 
-	npm run build
+ pnpm run build
 
 If the build is successful the output will be found in a folder named build.
 
 To test run:
 
-	npm test
+ pnpm test
 
 ## License
+
 ISC License (ISC)
 
 Copyright (c) 2015, Magnus Sillén
