@@ -7,6 +7,7 @@
     "less": "lessc app/css/bananaTime.less build/bananaTime.css",
     "build": "rm -rf build && npm run less && mkdir build/fonts && cp app/css/fonts/* build/fonts && cp app/index.html build/index.html && cp app/js/bananaTime.js build/bananaTime.js"
   },
+  "packageManager": "pnpm@11.11.0",
   "author": "Magnus Sillén",
   "license": "ISC",
   "devDependencies": {
