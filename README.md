@@ -1,4 +1,4 @@
-# BananaTime - [![Build Status](https://travis-ci.org/magnuskenneth/BananaTime.svg?branch=master)](https://travis-ci.org/magnuskenneth/BananaTime)
+# BananaTime
 
 This is a web app counting down to when it is time to eat banana.
 
